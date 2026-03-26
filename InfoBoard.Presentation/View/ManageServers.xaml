@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"          
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:InfoBoard.Presentation.ViewModels"
+    xmlns:models="clr-namespace:Domain.Models.Entities;assembly=Domain.Models"
+    x:Class="InfoBoard.Presentation.View.ManageServers"
+    x:DataType="viewModels:ManageServersViewModel"
+    Title="Hantera Spelservrar"
+    BackgroundColor="#000000">
+
+    <Grid ColumnDefinitions="0.6*, 0.4*" Padding="20" ColumnSpacing="20">
+
+        <VerticalStackLayout Grid.Column="0" Spacing="10">
+            <Label Text="ACTIVE SERVERS" 
+                   TextColor="#66C0F4" 
+                   FontSize="12" 
+                   FontAttributes="Bold" 
+                   CharacterSpacing="1.5"
+                   Margin="0,0,0,10"/>
+
+            <Border BackgroundColor="#121212" Stroke="#333" StrokeThickness="1" StrokeShape="RoundRectangle 16">
+                <CollectionView ItemsSource="{Binding Servers.AllServers}" HeightRequest="500">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:GameTimeItem">
+                            <Grid ColumnDefinitions="*, Auto" Padding="15">
+                                <VerticalStackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding Game}" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                                    <Label Text="{Binding Name}" FontSize="12" TextColor="#777777" />
+                                </VerticalStackLayout>
+
+                                <CheckBox Grid.Column="1" 
+                                          Color="#a29bfe"
+                                          IsChecked="{Binding IsSelected}" />
+
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" Color="#222" VerticalOptions="End"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+
+            <Button Text="Save Choice" 
+                    BackgroundColor="#a29bfe"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Command="{Binding SaveListCommand}"  
+                    Margin="0,15,0,0" 
+                    HeightRequest="45"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"/>
+            <Button Text="Remove Selected Servers" 
+                    BackgroundColor="Transparent"
+                    BorderColor="#e74c3c"
+                    BorderWidth="1"
+                    TextColor="#e74c3c"
+                    FontAttributes="Bold"
+                    Command="{Binding RemoveSelectedCommand}"  
+                    Margin="0,5,0,0" 
+                    HeightRequest="45"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"/>
+        </VerticalStackLayout>
+
+        <Border Grid.Column="1" 
+                BackgroundColor="#121212" 
+                Padding="20" 
+                Stroke="#333" 
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 16"
+                VerticalOptions="Start">
+
+            <VerticalStackLayout Spacing="15">
+                <Label Text="ADD A NEW SERVER" 
+                       TextColor="#66C0F4" 
+                       FontSize="12" 
+                       FontAttributes="Bold" 
+                       CharacterSpacing="1.5"
+                       Margin="0,0,0,5"/>
+
+                <Label Text="Game Name" TextColor="#777777" FontSize="12" Margin="0,0,0,-10"/>
+                <Entry Text="{Binding ServerForm.GameName}" 
+                       Placeholder="t.ex. World of Warcraft" 
+                       TextColor="White"
+                       PlaceholderColor="#444"/>
+
+                <Label Text="Type of reset" TextColor="#777777" FontSize="12" Margin="0,0,0,-10"/>
+                <Entry Text="{Binding ServerForm.ResetName}" 
+                       Placeholder="t.ex. Weekly Reset" 
+                       TextColor="White"
+                       PlaceholderColor="#444"/>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Date" TextColor="#777777" FontSize="12"/>
+                        <DatePicker Date="{Binding ServerForm.Date}" TextColor="White"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Time" TextColor="#777777" FontSize="12"/>
+                        <TimePicker Time="{Binding ServerForm.Time}" Format="HH:mm" TextColor="White"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Label Text="Interval" TextColor="#777777" FontSize="12" Margin="0,0,0,-10"/>
+                <Picker ItemsSource="{Binding Intervals}" 
+                        SelectedItem="{Binding ServerForm.Interval}" 
+                        TextColor="White"
+                        Title="Choose interval"/>
+
+                <Button Text="Add Server" 
+                        Command="{Binding AddServerCommand}" 
+                        BackgroundColor="Transparent"
+                        BorderColor="#a29bfe"
+                        BorderWidth="1"
+                        TextColor="#a29bfe"
+                        FontAttributes="Bold"
+                        HeightRequest="45"
+                        Margin="0,10,0,0"/>
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>

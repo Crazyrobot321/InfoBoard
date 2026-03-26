@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Domain.Models/Domain.Models.csproj" />
+  <Project Path="InfoBoard.Core/InfoBoard.Core.csproj" />
+  <Project Path="InfoBoard.Presentation/InfoBoard.Presentation.csproj" />
+</Solution>

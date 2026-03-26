@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Public Gather #1 [SE]",
+    "game": "Counter-Strike 2",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": true,
+    "displayTime": "1h 10m 51s"
+  },
+  {
+    "name": "Survival World v1.21",
+    "game": "Minecraft",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "02:15"
+  },
+  {
+    "name": "EU Facepunch Small 4",
+    "game": "Rust",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "120:45"
+  },
+  {
+    "name": "Odin\u0027s Hall (Private)",
+    "game": "Valheim",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "45:20"
+  },
+  {
+    "name": "Spaggie\u0027s Chernarus Blue",
+    "game": "DayZ",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "08:10"
+  },
+  {
+    "name": "Official PVE-EU-102",
+    "game": "Ark: Survival Ascended",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "8h 51m 14s"
+  },
+  {
+    "name": "Megabase Project v2",
+    "game": "Factorio",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "8h 51m 14s"
+  },
+  {
+    "name": "Last Stand - Hardcore",
+    "game": "Project Zomboid",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "12:40"
+  },
+  {
+    "name": "The Factory Must Grow",
+    "game": "Satisfactory",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "88:25"
+  },
+  {
+    "name": "Master Mode Journey",
+    "game": "Terraria",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "34:50"
+  },
+  {
+    "name": "UncleTopia Central",
+    "game": "Team Fortress 2",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "01:15"
+  },
+  {
+    "name": "Horde Night Prep",
+    "game": "7 Days to Die",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "15:05"
+  },
+  {
+    "name": "King of the Hill #2",
+    "game": "Arma 3",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "9h 39m 3s"
+  },
+  {
+    "name": "Pal-tastic Adventure",
+    "game": "Palworld",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "9h 39m 2s"
+  },
+  {
+    "name": "TTT Fun Server",
+    "game": "Garry\u0027s Mod",
+    "baseResetTime": "0001-01-01T00:00:00",
+    "interval": 0,
+    "isSelected": false,
+    "displayTime": "8h 51m 15s"
+  },
+  {
+    "name": "Once a year",
+    "game": "Steam Spring Sale",
+    "baseResetTime": "2026-03-19T18:00:00+01:00",
+    "interval": 2,
+    "isSelected": false,
+    "displayTime": "2h 51m 15s"
+  }
+]
