@@ -31,14 +31,13 @@ namespace InfoBoard.Presentation.ViewModels
         public WeatherViewModel(WeatherFacade weatherFacade)
         {
             _weatherFacade = weatherFacade;
-            UpdateWeatherCommand = new Command(async () => await ExecuteUpdateWeather());
+            UpdateWeatherCommand = new Command(async () => await UpdateWeather());
         }
 
-        private async Task ExecuteUpdateWeather()
+        private async Task UpdateWeather()
         {
             string input = CityInputText?.Trim() ?? "";
 
-            // 1. Validering (Hör hemma i VM)
             if (string.IsNullOrWhiteSpace(input) || !Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ\s-]+$"))
             {
                 await Shell.Current.DisplayAlertAsync("Error",
@@ -48,10 +47,8 @@ namespace InfoBoard.Presentation.ViewModels
 
             try
             {
-                // 2. Anropa Fasaden (Istället för två separata tjänster)
                 var (temp, hum, wind, date) = await _weatherFacade.GetWeather(input);
 
-                // 3. Uppdatera UI
                 CityDisplay = input.ToUpper();
                 Temp = temp;
                 Hum = "Humidity: " + hum;
