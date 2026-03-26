@@ -5,13 +5,14 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Domain.Models.Entities;
+using InfoBoard.Core.Facade;
+using System.Diagnostics;
 
 namespace InfoBoard.Presentation.ViewModels
 {
     public class WeatherViewModel : BasePropertyChanged
     {
-        private readonly ICoordinatesManager _coordinatesManager;
-        private readonly IYrWeatherFetcher _yrWeatherFetcher;
+        private readonly WeatherFacade _weatherFacade;
 
         private string _temp = "4°C";
         public string Temp { get => _temp; set { _temp = value; OnPropertyChanged(nameof(Temp)); } }
@@ -27,10 +28,9 @@ namespace InfoBoard.Presentation.ViewModels
 
         public ICommand UpdateWeatherCommand { get; }
 
-        public WeatherViewModel(ICoordinatesManager coordManager, IYrWeatherFetcher weatherFetcher)
+        public WeatherViewModel(WeatherFacade weatherFacade)
         {
-            _coordinatesManager = coordManager;
-            _yrWeatherFetcher = weatherFetcher;
+            _weatherFacade = weatherFacade;
             UpdateWeatherCommand = new Command(async () => await ExecuteUpdateWeather());
         }
 
@@ -38,27 +38,28 @@ namespace InfoBoard.Presentation.ViewModels
         {
             string input = CityInputText?.Trim() ?? "";
 
+            // 1. Validering (Hör hemma i VM)
             if (string.IsNullOrWhiteSpace(input) || !Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ\s-]+$"))
             {
                 await Shell.Current.DisplayAlertAsync("Error",
-                    "Enter a valid cityname (only letters, whitespaces and dashes allowed).", "OK");
+                    "Enter a valid city name (only letters, whitespaces and dashes allowed).", "OK");
                 return;
             }
 
             try
             {
-                var (lat, lon) = await _coordinatesManager.FetchCoords(input);
+                // 2. Anropa Fasaden (Istället för två separata tjänster)
+                var (temp, hum, wind, date) = await _weatherFacade.GetWeather(input);
+
+                // 3. Uppdatera UI
                 CityDisplay = input.ToUpper();
-
-                var (temp, hum, wind, date) = await _yrWeatherFetcher.FetchWeather(lat, lon);
-
                 Temp = temp;
                 Hum = "Humidity: " + hum;
                 CityInputText = string.Empty;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to fetch weather: {ex}");
+                Debug.WriteLine($"Failed to fetch weather: {ex.Message}");
                 await Shell.Current.DisplayAlertAsync("Error", "Couldn't find city or any weather.", "OK");
             }
         }

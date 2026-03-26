@@ -1,4 +1,5 @@
-﻿using InfoBoard.Core.Interfaces;
+﻿using InfoBoard.Core.Facade;
+using InfoBoard.Core.Interfaces;
 using InfoBoard.Core.Services;
 using InfoBoard.Presentation.View;
 using InfoBoard.Presentation.ViewModels;
@@ -51,6 +52,7 @@ namespace InfoBoard.Presentation
                 return new ToDoService(todoFilePath, alternativ);
             });
 
+            builder.Services.AddTransient<WeatherFacade>();
             // 4. VIEWMODELS
             builder.Services.AddSingleton<ToDoViewModel>();
             builder.Services.AddSingleton<GameViewModel>(s =>
